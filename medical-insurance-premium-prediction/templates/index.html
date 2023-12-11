@@ -9,35 +9,45 @@
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> -->
-    <title>Frontend to Backend Example</title>
+    <title>Medical Insurance Application</title>
 </head>
 
 <body>
     <h1>MEDICAL INSURANCE PREMIUM PREDICTION</h1>
 
+    
     <div class="container">
         <h2>Insurance Information</h2>
         <form id="insuranceForm" onsubmit="submitForm(event)">
         <!-- <form id="insuranceForm" action="/submit" method="post"> -->
-
+            <p>
             <label for="age">Age:</label>
             <input type="number" name="age" required>
+            </p>
 
-            <label for="sex">Sex:</label>
+            <p><label for="sex">Sex:</label>
             <select name="sex" required>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
             </select>
+            </p>
 
+            <p>
             <label for="bmi">BMI:</label>
             <input type="number" name="bmi" required>
+            </p>
 
+            <p>
             <label for="children">Number of Children:</label>
             <input type="number" name="children" required>
+            </p>
 
+            <p>
             <label for="smoker">Smoker:</label>
             <input type="checkbox" name="smoker">
+            </p>
 
+            <p>
             <label for="region">Region:</label>
             <select name="region" required>
                 <option value="northeast">NorthEast</option>
@@ -45,7 +55,40 @@
                 <option value="southwest">SouthWest</option>
                 <option value="southeast">SouthEast</option>
             </select>
-            <button type="submit">Submit</button>
+            </p>
+
+            <p>
+            <label for="medical-history">Medical history:</label>
+            <select name="medical-history" required>
+                <option value="diabetes">Diabetes</option>
+                <option value="high-blood-pressure">High Blood Pressure</option>
+                <option value="heart-disease">Heart Disease</option>
+                <option value="none">None</option>
+            </select>
+            </p>
+
+            <p>
+            <label for="family-medical-history">Family Medical history:</label>
+            <select name="family-medical-history" required>
+                <option value="diabetes">Diabetes</option>
+                <option value="high-blood-pressure">High Blood Pressure</option>
+                <option value="heart-disease">Heart Disease</option>
+                <option value="none">None</option>
+            </select>
+            </p>
+
+            <p>
+            <label for="exercise-frequency">Exercise frequency:</label>
+            <select name="exercise-frequency" required>
+                <option value="frequently">Frequently</option>
+                <option value="occasionally">Occasionally</option>
+                <option value="rarely">Rarely</option>
+                <option value="never">Never</option>
+            </select>
+            </p>
+            <p class="full-width">
+            <button type="submit">Predict Premium</button>
+            </p>
             <!-- <button onclick="submitForm()">Submit</button> -->
         </form>
 
@@ -58,7 +101,6 @@
     </div>
 
 
-
     <!-- <form>
         <label for="name">Name:</label>
         <input type="text" id="name" required><br><br>
@@ -67,53 +109,8 @@
         <button onclick="submitForm()">Submit</button>
     </form> -->
 
-    <script>
-        function submitForm(event) {
-            var age = document.getElementById("age").value;
-            var sex = document.getElementById("sex").value;
-            var bmi = document.getElementById("bmi").value;
-            var children = document.getElementById("children").value;
-            var smoker = document.getElementById("smoker").value;
-            var region = document.getElementById("region").value;
-
-            // Send data to the backend
-            fetch("/process", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ name: name, email: email })
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Handle the response from the backend
-                console.log(data);
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
-
-            submitFormData();
-        }
-
-        function submitFormData() {
-            // Get form data
-            const formData = new FormData(document.getElementById('insuranceForm'));
-
-            // Make an asynchronous request to the server
-            fetch('/submit', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-                // Update the result section with the prediction
-                document.getElementById('predictionResult').innerText = data;
-                // Show the result section
-                document.getElementById('resultSection').style.display = 'block';
-            })
-            .catch(error => console.error('Error:', error));
-        }
+    <script src="/script.js">
+        
     </script>
 </body>
 </html>
