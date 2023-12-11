@@ -18,6 +18,9 @@ def submit():
     children = request.form.get('children')
     smoker = 'Yes' if 'smoker' in request.form else 'No'
     region = request.form.get('region')
+    medical_history = request.form.get('medical-history')
+    family_medical_history = request.form.get('family-medical-history')
+    exercise_frequency = request.form.get('exercise-frequency')
 
     # Perform prediction using the predictor
     prediction = predictor.predict_insurance(age, sex, bmi, children, smoker, region)
