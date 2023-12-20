@@ -1,0 +1,44 @@
+<html>
+
+<link rel="stylesheet" href="/static/styles.css">
+
+<body bgcolor=#a3cfb4>
+
+    <center>
+
+        <h1>  PREDICTION :  </h1>
+    
+    {%if data%}
+    <div id="resultSection" action = '/predict' >
+        <h2>Insurance Premium Prediction Result:</h2>
+        <h2 id="predictionResult">{{ prediction_text }}</h2>
+        
+        {%if data >=15000%}
+        
+        <!-- <div id="resultSection" action = '/recommend' > -->
+            <!-- <h3>Recommendation results are :  </h3> -->
+            <!-- <h3 id="Basic plan">{{ prediction_text }}</h3> -->
+            <img src='static\premium.png'> 
+            
+            {%else%}
+            <!-- <h3>Recommendation results are :</h3> -->
+            <img src='static\basic.png' > 
+    
+        {%endif%}
+
+        <br><br>
+        </div>  
+    </div>  
+   
+
+    
+    {%endif%}
+
+        
+    <a href='/'>go back to home page</a>
+
+    </center>
+
+</body>
+
+</html>
