@@ -1,32 +1,28 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/styles.css">
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> -->
+   
     <title>Medical Insurance Application</title>
 </head>
 
-<body>
+<body class="background">
     <h1>MEDICAL INSURANCE PREMIUM PREDICTION</h1>
-
     
     <div class="container">
-        <h2>Insurance Information</h2>
-        <form id="insuranceForm" onsubmit="submitForm(event)">
+        <!-- <h2>Insurance Information</h2> -->
+        <form id="insuranceForm" method="post" action="/predict" accept-charset="UTF-8">
         <!-- <form id="insuranceForm" action="/submit" method="post"> -->
             <p>
             <label for="age">Age:</label>
-            <input type="number" name="age" required>
+            <input type="number" name="age" placeholder="Enter age" required>
             </p>
 
-            <p><label for="sex">Sex:</label>
-            <select name="sex" required>
+            <p><label for="gender">Gender:</label>
+            <select name="gender" required>
+                <option value="" disabled selected>Select your gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
             </select>
@@ -34,22 +30,28 @@
 
             <p>
             <label for="bmi">BMI:</label>
-            <input type="number" name="bmi" required>
+            <input type="number" name="bmi" required min="0" step=".01" placeholder="Enter BMI">
             </p>
 
             <p>
             <label for="children">Number of Children:</label>
-            <input type="number" name="children" required>
+            <input type="number" name="children" placeholder="Enter No. of Children">
             </p>
 
             <p>
-            <label for="smoker">Smoker:</label>
-            <input type="checkbox" name="smoker">
+                <label for="smoker">Smoker:</label>
+                <!-- <input type="checkbox" name="smoker"> -->
+                <select name="smoker" required>
+                    <option value="" disabled selected>Select </option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
             </p>
 
             <p>
             <label for="region">Region:</label>
             <select name="region" required>
+                <option value="" disabled selected>Select region</option>
                 <option value="northeast">NorthEast</option>
                 <option value="northwest">NorthWest</option>
                 <option value="southwest">SouthWest</option>
@@ -58,56 +60,48 @@
             </p>
 
             <p>
-            <label for="medical-history">Medical history:</label>
+            <label for="medical-history">Medical History:</label>
             <select name="medical-history" required>
-                <option value="diabetes">Diabetes</option>
-                <option value="high-blood-pressure">High Blood Pressure</option>
-                <option value="heart-disease">Heart Disease</option>
-                <option value="none">None</option>
+                <option value="Diabetes">Diabetes</option>
+                <option value="High blood pressure">High Blood Pressure</option>
+                <option value="Heart disease">Heart Disease</option>
+                <option value="None">None</option>
             </select>
             </p>
 
             <p>
-            <label for="family-medical-history">Family Medical history:</label>
+            <label for="family-medical-history">Family Medical History:</label>
             <select name="family-medical-history" required>
-                <option value="diabetes">Diabetes</option>
-                <option value="high-blood-pressure">High Blood Pressure</option>
-                <option value="heart-disease">Heart Disease</option>
-                <option value="none">None</option>
+                <option value="Diabetes">Diabetes</option>
+                <option value="High blood pressure">High Blood Pressure</option>
+                <option value="Heart disease">Heart Disease</option>
+                <option value="None">None</option>
             </select>
             </p>
 
             <p>
-            <label for="exercise-frequency">Exercise frequency:</label>
+            <label for="exercise-frequency">Exercise Frequency:</label>
             <select name="exercise-frequency" required>
-                <option value="frequently">Frequently</option>
-                <option value="occasionally">Occasionally</option>
-                <option value="rarely">Rarely</option>
-                <option value="never">Never</option>
+                <option value="Frequently">Frequently</option>
+                <option value="Occasionally">Occasionally</option>
+                <option value="Rarely">Rarely</option>
+                <option value="Never">Never</option>
             </select>
             </p>
             <p class="full-width">
-            <button type="submit">Predict Premium</button>
+            <button type="submit" value="predict" onclick="send_data()">Predict Premium</button>
             </p>
             <!-- <button onclick="submitForm()">Submit</button> -->
         </form>
-
-        <div id="resultSection" style="display:none;">
-            <h2>Insurance Prediction Result</h2>
-            <p id="predictionResult"></p>
-        </div>
+        <br>
+    
 
 
     </div>
 
+    <!-- style="display:none;" -->
 
-    <!-- <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" required><br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" required><br><br>
-        <button onclick="submitForm()">Submit</button>
-    </form> -->
+
 
     <script src="/script.js">
         
