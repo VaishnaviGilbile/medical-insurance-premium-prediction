@@ -1,27 +1,39 @@
 
-body {
-    font-family: 'Arial', sans-serif;
-    /* font-family: 'Roboto', sans-serif; */
-    
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+
 }
 
+
 h1 {
-    background-color: plum;
+    color: white;
+    background-color: #00aaa0;
     border-width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 10px;
-    margin-top: 0px;
+    
+}
+
+.background {
+    
+    background-color: white;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 50px auto;
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: lavenderblush;  
+    /* background-color: #8ed2c9;   */
+    background-color: #f6e4ad;
     background-image: none;
    
 }
@@ -30,7 +42,26 @@ form {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
+    
 }
+
+input,select{
+
+    width: 70%;
+    
+    padding: 8px 15px;
+    
+    margin: 4px 0px;
+    
+    /* border: 2px solid #265073; */
+
+    border-radius: 6px; 
+
+    border: none;
+
+    /* border-bottom: 2px solid #265073; */
+}
+
 
 form label {
     display: block;
@@ -40,13 +71,9 @@ form p {
     margin: 0;
 }
 
-/* form p:last-child {
-    clear: both;
-    width: 100%;
-} */
 
 label {
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 #insuranceForm{
@@ -55,22 +82,50 @@ label {
 
 button {
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #00aaa0;
     color: #fff;
     border: none;
     width: 100%;
-    border-radius: 4px;
+    border-radius: 9px;
     cursor: pointer;
+    margin-top: 15px;
+    font-size: medium;
 }
 
 button:hover, button:focus {
-    background: darkgreen;
+    background: #2c786c;
     outline: 0;
 }
 
- .full-width {  
-    /* clear: both; */
-    /* width: 100%; */
+.full-width {  
     grid-column: span 3;
     
-    }
+}
+
+#resultSection{
+    border-top: 2cap;
+    margin-top: 30px;
+    height: 450px;
+    background-color: #f6e4ad;
+    padding-top: 15px;
+    width: 1000px;
+    /* font-size: large; */
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    
+}
+
+
+#resultSection h2{
+    font-size: x-large;
+}
+
+#resultSection img {
+    width: 600px;
+    height: 350px;
+}
+
+#predictionResult {
+    color: #2c786c;
+}
