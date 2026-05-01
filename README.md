@@ -74,3 +74,7 @@ The dataset includes:
 - Converts inputs into encoded format  
 - Predicts insurance premium in real-time  
 
+###UI:
+<img width="1468" height="756" alt="image" src="https://github.com/user-attachments/assets/def0c090-5c41-43ca-bb0a-0f61f93bbde1" />
+
+
