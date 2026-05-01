@@ -38,7 +38,7 @@ def predict():
             gender = 0
         elif(gender=='female'):
             gender = 1
-        bmi = request.form.get('bmi')
+        bmi = float(request.form.get('bmi'))
         children = int(request.form.get('children'))
         smoker = request.form.get('smoker')
         if request.form.get('smoker') == 'yes':
@@ -54,46 +54,15 @@ def predict():
             region = 2
         elif(region=='northwest'):
             region = 3
-        medical_history = request.form.get('medical-history')
-        if(medical_history=='Diabetes'):
-            medical_history = 0
-        elif(medical_history=='High blood pressure'):
-            medical_history = 1
-        elif(medical_history=='Heart disease'):
-            medical_history = 2
-        elif(medical_history=='None'):
-            medical_history = 3
-        family_medical_history = request.form.get('family-medical-history')
-        if(family_medical_history=='Diabetes'):
-            family_medical_history = 0
-        elif(family_medical_history=='High blood pressure'):
-            family_medical_history = 1
-        elif(family_medical_history=='Heart disease'):
-            family_medical_history = 2
-        elif(family_medical_history=='None'):
-            family_medical_history = 3
-
-        exercise_frequency = request.form.get('exercise-frequency')
-        if(exercise_frequency=='Never'):
-            exercise_frequency = 0
-        elif(exercise_frequency=='Occasionally'):
-            exercise_frequency = 1
-        elif(exercise_frequency=='Rarely'):
-            exercise_frequency = 2
-        elif(exercise_frequency=='Frequently'):
-            exercise_frequency = 3
-
-
-        prediction=model.predict([[
+        # The model was trained on these six features in this order:
+        # age, gender, bmi, children, smoker, region
+        prediction = model.predict([[
             age,
             gender,
             bmi,
             children,
             smoker,
-            region,
-            medical_history,
-            family_medical_history,
-            exercise_frequency
+            region
         ]])
 
         output=round(prediction[0],2)

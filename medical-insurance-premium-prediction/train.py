@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import metrics
 
 
-insurance_dataset=pd.read_csv('insurance_dataset.csv')
+insurance_dataset=pd.read_csv('insurance.csv')
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -67,30 +67,29 @@ insurance_dataset['region'].value_counts()
 '''
 
 # encoding sex column
+
+# The CSV uses 'sex' and 'charges' columns. Map them to the names used by the app and encode categoricals.
+insurance_dataset.rename(columns={'sex': 'gender', 'charges': 'insurance_charge'}, inplace=True)
+
+# encoding 'gender' column: male->0, female->1
 insurance_dataset.replace({'gender':{'male':0,'female':1}}, inplace=True)
 
-# encoding 'smoker' column
+# encoding 'smoker' column: yes->0, no->1 (matching app logic)
 insurance_dataset.replace({'smoker':{'yes':0,'no':1}}, inplace=True)
 
 # encoding 'region' column
 insurance_dataset.replace({'region':{'southeast':0,'southwest':1,'northeast':2,'northwest':3}}, inplace=True)
-
-# encoding 'medical_history' column
-insurance_dataset.replace({'medical_history':{'Diabetes':0,'High blood pressure':1,'Heart disease':2,'None':3}}, inplace=True)
-
-# encoding 'family_medical_history' column
-insurance_dataset.replace({'family_medical_history':{'Diabetes':0,'High blood pressure':1,'Heart disease':2,'None':3}}, inplace=True)
-
-# encoding 'exercise_frequency' column
-insurance_dataset.replace({'exercise_frequency':{'Never':0,'Occasionally':1,'Rarely':2,'Frequently':3}}, inplace=True)
 
 # encoding 'occupation' column
 #insurance_dataset.replace({'occupation':{'Blue collar':0,'White collar':1,'Student':2,'Unemployed':3}}, inplace=True)
 
 
 # Assuming df is your DataFrame with the target variable in the last column
-X = insurance_dataset.iloc[:, :-1]  # Features (all columns except the last one)
-Y = insurance_dataset.iloc[:, -1]   # Target variable (last column)
+# Select features that the Flask app will send to the model in this order:
+# age, gender, bmi, children, smoker, region
+feature_cols = ['age','gender','bmi','children','smoker','region']
+X = insurance_dataset[feature_cols]
+Y = insurance_dataset['insurance_charge']
 
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=2)
